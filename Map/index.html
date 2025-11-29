@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emberstar World Map</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <!-- 返回按钮 -->
+    <button id="backButton" class="back-button">← Back</button>
+
+    <!-- 地图区域 -->
+    <div class="map-container">
+        <div class="map-inner">
+            <img id="mapImage" class="map-image" src="./images/Map.PNG" />
+
+            <!-- 地图点位（C1：你原本的泪滴图标 + 光圈） -->
+            <button class="map-point" data-id="1" style="left:30%; top:25%;">
+                <svg class="pin-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5
+                    s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <div class="pulse-ring"></div>
+            </button>
+
+            <button class="map-point" data-id="2" style="left:50%; top:30%;">
+                <svg class="pin-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0
+                        5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38
+                        0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12
+                        2.5-2.5 2.5z"/></svg>
+                <div class="pulse-ring"></div>
+            </button>
+
+            <button class="map-point" data-id="3" style="left:50%; top:50%;">
+                <svg class="pin-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5
+                        5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0
+                        9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5
+                        2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <div class="pulse-ring"></div>
+            </button>
+
+            <button class="map-point" data-id="4" style="left:85%; top:35%;">
+                <svg class="pin-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5
+                        5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0
+                        9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5
+                        2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <div class="pulse-ring"></div>
+            </button>
+
+            <button class="map-point" data-id="5" style="left:85%; top:65%;">
+                <svg class="pin-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5
+                        5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0
+                        9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5
+                        2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <div class="pulse-ring"></div>
+            </button>
+
+            <button class="map-point" data-id="6" style="left:30%; top:85%;">
+                <svg class="pin-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5
+                        5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0
+                        9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5
+                        2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <div class="pulse-ring"></div>
+            </button>
+
+            <button class="map-point" data-id="7" style="left:50%; top:90%;">
+                <svg class="pin-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5
+                        5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0
+                        9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5
+                        2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <div class="pulse-ring"></div>
+            </button>
+
+            <button class="map-point" data-id="8" style="left:70%; top:85%;">
+                <svg class="pin-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5
+                        5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0
+                        9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5
+                        2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <div class="pulse-ring"></div>
+            </button>
+
+        </div>
+
+        <!-- 折叠条（A 型） -->
+        <div id="panelToggle" class="panel-toggle">〈</div>
+
+        <!-- 信息面板（AC 中间） -->
+        <div id="infoPanel" class="info-panel">
+            <div class="info-content">
+
+                <!-- 左：主信息 -->
+                <div class="info-main">
+                    <h2 id="info-title">区域名称</h2>
+                    <img id="info-image" class="info-image" src="./images/Map.PNG" />
+                    <p id="info-description">点击地图上的点查看详情。</p>
+                </div>
+
+                <!-- 右：子区域 -->
+                <div class="subregion-column">
+                    <h3 class="subregion-title">子区域</h3>
+                    <ul id="subregionList" class="subregion-list"></ul>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 下方区域 tabs（恢复） -->
+    <div id="regionTabs" class="region-tabs"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

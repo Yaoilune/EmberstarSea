@@ -1,0 +1,317 @@
+/* ===========================
+   全局
+=========================== */
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #0b0c10;
+    color: #fff;
+    font-family: "微软雅黑", sans-serif;
+}
+
+/* ===========================
+   返回按钮
+=========================== */
+.back-button {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.287);
+    border: 1px solid transparent;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 9999;
+    transition: 0.2s;
+}
+.back-button:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: #f9e3a7;
+}
+
+/* ===========================
+   地图容器
+=========================== */
+.map-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.map-inner {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+}
+
+.map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* ===========================
+   地图点位（C1：你原本的泪滴图标）
+=========================== */
+.map-point {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+}
+
+/* 地图图标（蓝色） */
+.pin-icon {
+    width: 100%;
+    height: 100%;
+    color: #60a5fa;
+    filter: drop-shadow(0 0 6px #60a5fa);
+    transition: 0.15s;
+}
+
+.map-point:hover .pin-icon {
+    color: #facc15;
+    filter: drop-shadow(0 0 6px #facc15);
+}
+
+/* 光圈 */
+.pulse-ring {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border: 2px solid rgba(96,165,250,0.6);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 2s infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.6);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0;
+    }
+}
+
+
+/* ===========================
+   A 型折叠条
+=========================== */
+.panel-toggle {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(20,20,25,0.85);
+    color: #facc15;
+    padding: 8px 6px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 6px 0 0 6px;
+    z-index: 300;
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: 0.2s;
+}
+.panel-toggle:hover {
+    background: rgba(40,40,50,0.9);
+}
+
+
+/* ===========================
+   信息面板（AC 中间）
+=========================== */
+.info-panel {
+    position: fixed;
+    top: 0;
+    right: -380px; /* 默认收起 */
+    width: 380px;
+    height: 100%;
+    background: rgba(15, 15, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border-left: 1px solid rgba(255,255,255,0.12);
+    transition: right 0.3s ease;
+    z-index: 250;
+}
+
+.info-panel.show {
+    right: 0;
+}
+
+/* 内部结构：左信息 | 右子区域 */
+.info-content {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    gap: 16px;
+}
+
+
+/* ===========================
+   左侧主信息
+=========================== */
+.info-main {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.info-main h2 {
+    margin: 0 0 10px;
+    font-size: 20px;
+}
+
+.info-image {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 10px 0 16px;
+}
+
+#info-description {
+    line-height: 1.5;
+    opacity: 0.85;
+}
+
+
+/* ===========================
+   右侧子区域
+=========================== */
+.subregion-column {
+    width: 110px;
+    border-left: 1px solid rgba(255,255,255,0.12);
+    padding-left: 10px;
+    overflow-y: auto;
+}
+
+.subregion-title {
+    font-size: 14px;
+    margin: 0 0 10px;
+    opacity: 0.8;
+}
+
+.subregion-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.subregion-item {
+    padding: 6px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 4px;
+    transition: 0.15s;
+    color: #eee;
+}
+
+.subregion-item:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+.subregion-item.active {
+    background: rgba(250,204,21,0.22);
+    color: #facc15;
+}
+
+
+/* ===========================
+   底部 tabs（横向滚动模式）
+=========================== */
+.region-tabs {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;        /* 横着排 */
+    gap: 12px;                  /* tab 之间的间隔 */
+    padding: 10px 16px;
+    background: rgba(0,0,0,0.55);
+    border-radius: 999px;
+    z-index: 400;
+
+    overflow-x: auto;           /* ⭐横向滚动 */
+    overflow-y: hidden;
+    white-space: nowrap;        /* ⭐禁止换行 */
+    max-width: 90vw;            /* ⭐避免太长撑出屏幕 */
+}
+
+/* 让滚动条不可见（更干净） */
+.region-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+/* 每一个 tab */
+.region-tab {
+    display: inline-block;      /* ⭐横向排列 */
+    padding: 8px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    color: #eee;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: 0.25s;
+    white-space: nowrap;        /* ⭐避免换行 */
+}
+
+.region-tab:hover {
+    background: rgba(255,255,255,0.20);
+    border-color: #f9e3a7;
+}
+
+.region-tab.active {
+    background: #facc15;
+    color: #000;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- 重要：保证页面图片比例不乱，避免被压扁 --- */
+html {
+    min-width: 1280px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 1280px;
+    margin: 0 auto;
+}
+
