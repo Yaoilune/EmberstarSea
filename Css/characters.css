@@ -1,0 +1,977 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.main-container {
+  position: relative;
+    
+  /* 让出导航条的高度，让内容从 logo 下面开始 */
+  margin-top: 8.36vw;
+
+  /* 剩下的高度刚好填满一屏 */
+  height: calc(100vh - 8.36vw);
+}
+
+
+.content-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+/* Left Sidebar */
+.left-sidebar {
+  width: 12rem;
+  padding: 1.5rem;
+}
+
+
+
+
+
+
+
+
+
+.category-button {
+  position: relative;
+  width: 100%;
+  text-align: left;
+  padding: 0.4rem 1rem 0.4rem 1.8rem; /* 1.8rem = 竖条离文字的距离 */
+  background: none;
+  border: none;
+  color: #cfcfcf;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0.35rem 0; /* 按钮间距，不连在一起 */
+  font-size: 1rem;
+}
+
+/* 默认：短竖条（灰米色） */
+.category-button::before {
+  content: "";
+  position: absolute;
+  left: 0.9rem;  /* 控制竖条整体位置（越大越靠右） */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 0.9rem;   /* ← 竖条长度（你想多短都能改） */
+  background-color: #d8d5cc4d;
+  border-radius: 1px;
+  opacity: 0.8;     /* 轻一点 */
+  
+}
+
+/* hover：字亮一点，不改变竖条颜色 */
+.category-button:hover {
+  color: #f0f0f0;
+}
+
+/* 选中：竖条变金色，但保持同样长度 */
+.category-button.active {
+  color: #f2eee7;
+  
+}
+
+.category-button.active::before {
+  background-color: #d4af37; /* 你的金色 */
+  opacity: 1;
+}
+
+
+
+
+
+
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  position: relative;
+  overflow: visible;
+}
+
+.bg-image-container {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+}
+
+.bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+.content-overlay {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title-section {
+  margin-bottom: 1rem;
+}
+
+.chinese-title {
+  font-size: 6rem;
+  line-height: 1.1;
+  color: #d4af37;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+}
+
+.english-title {
+  font-size: 2rem;
+  color: rgba(212, 175, 55, 0.7);
+  letter-spacing: 0.05em;
+  margin-top: -1rem;
+}
+
+.description-section {
+  max-width: 48rem;
+  color: #d1d5db;
+}
+
+.skin-info {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.description-text {
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+
+.detail-button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: rgba(212, 175, 55, 0.2);
+  border: 1px solid #d4af37;
+  border-radius: 0.5rem;
+  color: #d4af37;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.detail-button:hover {
+  background-color: rgba(212, 175, 55, 0.3);
+  transform: scale(1.05);
+}
+
+/* Right Sidebar */
+/* 右侧 */
+.right-sidebar {
+  width: 18rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  padding-top: 3rem;
+  z-index: 40;
+  transform: translateY(-3rem); /* 自己调 -2rem / -4rem 都行 */
+}
+
+
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  color: #d4af37;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 50%;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.carousel-button:hover {
+  color: #ffd700;
+  border-color: #ffd700;
+}
+
+.left-button {
+  left: 0.5rem;
+}
+
+.right-button {
+  right: 0.5rem;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+}
+
+.skin-carousel {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0 3rem;
+}
+
+.skin-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  width: 9rem;
+  height: calc(100vh - 340px);
+  cursor: pointer;
+
+}
+
+
+.skin-card.active {
+  
+  box-shadow: 0 0 0 2px rgba(240, 203, 172, 0.977);
+}
+
+.skin-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.skin-overlay-inactive {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4), transparent);
+}
+
+/* 皮肤卡片底部的名字条 */
+.skin-info-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 0.35rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0)
+  );
+
+  z-index: 3;   /* 保证在图片和暗色遮罩上面 */
+}
+
+
+.skin-char-name {
+  color: #d4af37;
+  font-size: 0.75rem;
+}
+
+.skin-name {
+  font-size: 20px !important;
+  color: #9ca3af;
+}
+
+/* 选中卡片的皮肤名：正常亮一点 */
+.skin-card.active .skin-name {
+  color: #f4e8d5;
+  opacity: 1;
+}
+
+/* 没选中的皮肤名：颜色淡一点、透明一点 */
+.skin-card:not(.active) .skin-name {
+  color: #b0b0b0;
+  opacity: 0.6;
+}
+
+.skin-name {
+  font-size: 0.625rem;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+
+/* Bottom Bar */
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.162), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(1px);
+  padding: 1.5rem 0;
+  z-index: 30;
+}
+
+.bottom-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0 3rem;
+}
+
+.nav-button {
+  color: #d4af37;
+  background: none;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 50%;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nav-button:hover {
+  color: #ffd700;
+  border-color: #ffd700;
+}
+
+.character-cards {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.char-card {
+  position: relative;
+  cursor: pointer;
+}
+
+.char-card-inner {
+  width: 6rem;
+  height: 8rem;
+  overflow: hidden;
+  transition: all 0.3s;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1.25px solid rgba(255, 255, 255, 0.2);
+}
+
+.char-card-inner:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.char-card-inner.active {
+  transform: scale(1.05);
+  border-color: rgba(240, 203, 172, 0.977);
+}
+
+.char-card-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.char-card-name {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* 让角色详情弹窗盖住 header */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;          /* 比 header 的 99 更大就行 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+
+/* 更轻一点的遮罩，能看到后面的页面 */
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.201);  /* 0.8 -> 0.45 */          /* 适当柔一点 */
+}
+
+
+.modal-content {
+  position: relative;
+    width: 78%;
+    max-width: 950px;
+    max-height: 3000px;
+    background: rgba(20, 24, 34, 0.769);
+    border-radius: 22px;
+    padding: 32px 45px;
+    border: 1px solid rgb(255, 228, 182);
+    box-shadow: inset 0 0 28px rgba(255, 255, 255, 0.04), 0 0 60px rgba(0, 0, 0, 0.75);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.close-button {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color:  #ffe9a8;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+  z-index: 10;
+}
+
+.close-button:hover {
+  color:  #ffe9a8;
+}
+
+.modal-header {
+  text-align: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid  #ffe9a8;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  color:  #ffe9a8;
+}
+
+.modal-tab-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid  #ffe9a8;
+}
+
+.modal-tab {
+  padding: 0.5rem 2rem;
+  color:  #ffe9a8;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.modal-tab.active {
+  border-bottom-color:  #ffe9a8;
+}
+
+
+
+.modal-body-wrapper {
+    min-height: 610px;
+    max-height: calc(100vh - 240px); /* 防止超出屏幕 */
+    overflow-y: auto;                /* 内容过长时出现滚动条 */
+}
+
+
+
+/* 两个页面共同的外壳高度，不要跟着内容缩 */
+.modal-body-wrapper {
+    min-height: 610px;
+}
+
+
+
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.modal-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+.modal-middle,
+.modal-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color:  #ffe9a8;
+}
+
+.info-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.info-label {
+  color:  #ffe9a8;
+}
+
+.modal-bottom {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+/* mbti */
+.modal-chart-left h3,
+.chart-title {
+  font-size: 1.25rem;
+  color:  #ffe9a8;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+
+.chart-placeholder {
+  width: 100%;
+  height: 16rem;
+}
+
+.modal-chart-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.radar-placeholder {
+  width: 20rem;
+  height: 20rem;
+}
+
+.chart-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==== 高级版角色展示：整体风格统一成 AURELIA 那种 ==== */
+
+/* 背景图再暗一点 + 左侧加重遮罩，让字更干净 */
+.bg-image-container {
+  position: absolute;
+  inset: 0;
+  opacity: 1; /* 0.3 -> 0.45 你可以自己微调 */
+}
+
+.bg-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.15) 35%,
+    rgba(0, 0, 0, 0.05) 60%,
+    transparent 100%
+  );
+}
+
+
+/* 中间内容区域：更靠左、上下居中，留出呼吸感 */
+.content-overlay {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  padding: 0 6rem;          /* 左右留白多一点 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* 垂直居中 */
+}
+
+/* 标题区：做成和 AURELIA 一样的层级感 */
+.title-section {
+  margin-bottom: 1.5rem;
+}
+
+
+
+
+
+
+
+
+
+/* 中文大标题：金色、发光、比现在更“压得住场” */
+.chinese-title {
+  margin: 0;                 /* 防止自带外边距 */
+  font-size: 4.6rem;         /* 比 6rem 小一点更精致 */
+  line-height: 1.05;         /* 紧一点但不挤 */
+  color: #f2eee7;            /* 高级米白 */
+  letter-spacing: 0.08em;
+  text-shadow: none;         /* 不要发光 */
+}
+
+.english-title {
+  margin: 0.4rem 0 0;        /* 往下留 0.4rem 距离 */
+  font-size: 1.8rem;
+  color: rgba(242, 238, 231, 0.85);
+  letter-spacing: 0.18em;
+  text-shadow: none;         /* 也不发光 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 下面这块文字：限制宽度，不要铺太开，看起来更干净 */
+.description-section {
+  max-width: 32rem;              /* 原来是 48rem，太宽了 */
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.skin-info {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.description-text {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+}
+
+/* 角色详情按钮：做成金色边框、低调一点 */
+.detail-button {
+  padding: 0.7rem 2.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(247, 208, 80, 0.9);
+  background: transparent;
+  color: rgba(247, 208, 80, 0.9);
+  font-size: 0.9rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.detail-button:hover {
+  background: rgba(247, 208, 80, 0.12);
+  box-shadow: 0 0 20px rgba(247, 208, 80, 0.45);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 统一修正圆钮内部对齐 */
+.nav-button,
+.carousel-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;                 /* 别再用 padding 把图标挤飞了 */
+  
+  /* 你之前 A 方案的那几行也保留着： */
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+}
+
+
+
+
+
+
+
+
+
+/* —— 让右侧立绘区完全透明 —— */
+
+.right-sidebar,
+.skin-carousel,
+.skin-item {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* —— 整个角色页面的大背景图 —— */
+body {
+  background-image: url("../images/role-bg.jpg"); /* 改成你的图片路径 */
+  background-size: cover;         /* 铺满整个页面 */
+  background-position: center;    /* 居中 */
+  background-attachment: fixed;   /* 固定背景，不随滚动动 */
+  background-repeat: no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 右侧皮肤栏更宽一点 */
+.right-sidebar {
+  width: 22rem;             /* 原来是 18rem，可以继续加到 24rem 看效果 */
+}
+
+/* 让竖着的小卡片更宽 + 靠得更紧 */
+.skin-carousel {
+  gap: 0;                   /* 卡片之间不要间隙 */
+  padding: 0 2rem;          /* 靠右一些就调这里，变大/变小都可以 */
+}
+
+.skin-card {
+  width: 9rem;              /* 比原来的 8rem 略宽一点 */
+}
+
+/* 可选：让激活的金色边框更粗一些 */
+.skin-card.active {
+  box-shadow: 0 0 0 3px rgba(240, 203, 172, 0.98);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bg-image-container {
+  position: fixed;
+  top: 0;
+  bottom: 80px;          /* 一定要 0，图片才是真正铺到底 */
+  left: 240px;
+  right: 260px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+.bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;        /* ✅ 改这里：完整放进框里 */
+  object-position: center;    /* 居中对齐，不要偏一边 */
+  background-color: #00000000;     /* 选一个底色，空出来的地方用它填充，可选 */
+}
+
+
+
+.modal-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 40px;
+  padding: 20px 40px;
+  font-size: 16px;
+  color: #f0e9d6;
+}
+
+.info-label {
+  color: #d8cba8;
+  margin-right: 6px;
+}
+
+
+
+
+
+
+
+
+
+
+/* 皮肤故事整体区域 */
+.skin-story-panel {
+    width: 40%;
+    padding: 20px 30px;
+    color: #f0e9d6;
+    border-left: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 标题 */
+.skin-story-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d8cba8;
+    margin-bottom: 10px;
+}
+
+/* 文本窗口（可滚动） */
+.skin-story-content {
+    font-size: 15px;
+    line-height: 1.6;
+    white-space: pre-line;          /* 支持换行 */
+    max-height: 280px;              /* 你可调高 */
+    overflow-y: auto;               /* 可滚动 */
+    padding-right: 10px;
+    color: #ffffffd4;
+}
+
+
+
+
+
+
+
+
+
+.modal-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 两列 */
+    gap: 16px 40px;
+    padding: 20px 60px;
+    width: 100%;
+}
+
+.info-row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 6px;
+}
+
+.info-label {
+    color: #d9caa9;
+}
+
+.occupation-row {
+    grid-column: span 2;
+}
+
+
+
+
+
+
+
+
+
+
+
+.modal-body {
+  display: none;
+}
+
+.modal-body.active {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+.skin-name {
+  text-align: center;
+  font-size: 0.75rem;
+  margin-top: 4px;
+  color: #f0e9d6;
+  pointer-events: none;
+}

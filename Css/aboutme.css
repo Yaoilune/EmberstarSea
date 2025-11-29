@@ -1,0 +1,174 @@
+/* ==== FULLSCREEN DEEP BLUE FANTASY ABOUT PAGE – FINAL VERSION ==== */
+@font-face {
+    font-family: "abcfont";
+    src: url("../css/zaozigongfangnaisiti.ttf");
+}
+
+
+
+/* 页面全背景：深蓝渐变 + 微光 */
+body {
+  background: #0f0f11;
+  color: #e8e9ed;
+  font-family: "Inter", "Noto Sans SC", sans-serif;
+  letter-spacing: 0.01em;
+}
+
+/* 主容器 */
+.about {
+  max-width: 960px;
+  margin: 130px auto 120px;
+  padding: 0 34px;
+}
+
+/* 顶部标题 */
+.about-hero {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.about-hero h1 {
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ffe9a8;
+  text-shadow: 0 0 12px rgba(255, 233, 150, 0.25);
+}
+
+.subtitle {
+  font-size: 15px;
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.08em;
+}
+
+/* 两栏布局 */
+.about-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 52px;
+  align-items: start;
+}
+
+/* 左侧照片 */
+.about-photo img {
+  width: 100%;
+  border-radius: 22px;
+  object-fit: cover;
+  box-shadow: 0 18px 50px rgba(10, 20, 40, 0.9);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.about-photo img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 28px 60px rgba(12, 22, 45, 1);
+}
+
+/* 右侧文字 */
+.about-text p {
+  margin-bottom: 20px;
+  line-height: 1.85;
+  font-size: 16px;
+  color: #ffe9a8;
+}
+
+/* 隐藏旧标签 */
+.about-tags {
+  display: none;
+}
+
+/* 手机模式 */
+@media (max-width: 768px) {
+  .about {
+    margin: 110px 18px 80px;
+    padding: 0 16px;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  .about-photo {
+    max-width: 280px;
+    margin: 0 auto 20px;
+  }
+
+  .about-hero h1 {
+    font-size: 36px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* —— 让整个内容更“紧凑”，适合单屏展示 —— */
+
+
+
+
+
+/* 左边照片整体更小 */
+.about-photo img {
+  border-radius: 20px;
+  box-shadow: 0 14px 40px rgba(10, 20, 40, 0.8);
+}
+
+/* 右侧文字更紧凑，段落更密集 */
+.about-text p {
+  margin-bottom: 12px;      /* 缩小段落间距 */
+  font-size: 16px;          /* 字稍微小点 */
+  line-height: 1.6;         /* 行距更紧，让内容长度拉长 */
+  max-width: 90%;           /* 让文字成为更长的矩形，而不是大方块 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- 重要：保证页面图片比例不乱，避免被压扁 --- */
+html {
+    min-width: 1280px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 1280px;
+    margin: 0 auto;
+}

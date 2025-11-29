@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="applicable-device" content="pc,mobile">
+    <title>角色</title>
+    <link rel="shortcut icon" href="./images/yaoyao.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./icon/iconfont.css">
+    <link rel="stylesheet" href="./css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/characters.css">
+    
+</head>
+
+<body>
+    <!-- 顶部导航 -->
+    <div class="header">
+        <a href="./index.html" class="logo">
+            <img src="./images/Logo.PNG" alt="">
+        </a>
+        <ul class="menu">
+            <li><a href="./index.html">首页</a></li>
+            <li><a href="./Works.html">Works</a></li>
+            <li class="active">
+                <a href="./Character.html">角色</a>
+                <div class="bg">
+                    <img src="./images/header-active1.png" class="img1" alt="" />
+                    <img src="./images/header-active2.png" class="img2" alt="" />
+                    <img src="./images/header-active3.png" class="img1" alt="" />
+                </div>
+            </li>
+            <li><a href="./World.html">星烬海</a></li>
+            <li><a href="./Story.html">故事</a></li>
+            <li><a href="./Aboutme.html">About Me</a></li>
+        </ul>
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="main-container">
+    <div class="content-wrapper">
+      <!-- Left Sidebar -->
+      <aside class="left-sidebar">
+        <div id="categories"></div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Background Image -->
+        <div class="bg-image-container">
+          <img id="bgImage" src="" alt="" class="bg-image">
+          <div class="bg-overlay"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="content-overlay">
+          <div class="title-section">
+            <h1 id="chineseTitle" class="chinese-title"></h1>
+            <div id="englishTitle" class="english-title"></div>
+          </div>
+
+          <div class="description-section">
+            <p id="skinInfo" class="skin-info"></p>
+            <p id="skinDescription" class="description-text"></p>
+            <button id="detailBtn" class="detail-button">角色详情</button>
+          </div>
+        </div>
+      </main>
+
+      <!-- Right Sidebar -->
+      <aside class="right-sidebar">
+        <button id="prevSkinBtn" class="carousel-button left-button">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
+
+        <div id="skinCarousel" class="skin-carousel"></div>
+
+        <button id="nextSkinBtn" class="carousel-button right-button">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </aside>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="bottom-bar">
+      <div class="bottom-controls">
+        <button id="prevCharBtn" class="nav-button">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
+        
+        <div id="characterCards" class="character-cards"></div>
+
+        <button id="nextCharBtn" class="nav-button">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Character Detail Modal -->
+  <div id="detailModal" class="modal" style="display: none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button id="closeModalBtn" class="close-button">
+        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+
+
+<div class="modal-header">
+        <h2 class="modal-title">角色详情/INFORMATION</h2>
+      </div>
+
+      <div class="modal-tab-nav">
+  <!-- 左：角色资料（显示角色名） -->
+  <button id="modalInfoTab" class="modal-tab active"></button>
+  <!-- 右：背景故事 -->
+  <button id="modalStoryTab" class="modal-tab">背景故事</button>
+</div>
+
+ 
+ <div class="modal-body-outer">
+    <!-- ...资料开始... -->
+
+      
+      
+      <!-- 两个页面的容器 -->
+<div class="modal-body-wrapper">
+  <!-- Page1：角色资料 -->
+  <div id="tabInfo" class="modal-body active">
+    <div class="modal-info-grid">
+      <div class="info-row"><span class="info-label">昵称：</span><span id="modalNickname"></span></div>
+      <div class="info-row"><span class="info-label">性别：</span><span id="modalGender"></span></div>
+      <div class="info-row"><span class="info-label">生日：</span><span id="modalBirthday"></span></div>
+      <div class="info-row"><span class="info-label">年龄：</span><span id="modalAge"></span></div>
+      <div class="info-row"><span class="info-label">身高：</span><span id="modalHeight"></span></div>
+      <div class="info-row"><span class="info-label">种族：</span><span id="modalRace"></span></div>
+      <div class="info-row"><span class="info-label">能量：</span><span id="modalEnergy"></span></div>
+      <div class="info-row"><span class="info-label">性格：</span><span id="modalPersonality"></span></div>
+
+      <div class="info-row"><span class="info-label">元素：</span><span id="modalElement"></span></div>
+      <div class="info-row"><span class="info-label">阵营：</span><span id="modalFaction"></span></div>
+      <div class="info-row"><span class="info-label">区域：</span><span id="modalRegion"></span></div>
+      <div class="info-row"><span class="info-label">所属：</span><span id="modalAffiliation"></span></div>
+      <div class="info-row"><span class="info-label">出生地：</span><span id="modalBirthplace"></span></div>
+      <div class="info-row"><span class="info-label">武器：</span><span id="modalWeapon"></span></div>
+      <div class="info-row occupation-row"><span class="info-label">身份/职业：</span><span id="modalOccupation"></span>
+      </div>
+    </div>
+
+    <!-- 下面两张图保持不变 -->
+    <div class="modal-bottom">
+      <div class="modal-chart-left">
+        <h3 class="chart-title">INTJ</h3>
+        <div class="chart-placeholder">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop"
+               alt="MBTI Chart" class="chart-img">
+        </div>
+      </div>
+      <div class="modal-chart-right">
+        <div class="radar-placeholder">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=320&h=320&fit=crop"
+               alt="Stats Chart" class="chart-img">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page2：背景故事 -->
+  <div id="tabStory" class="modal-body">
+    <div class="story-section">
+      <h3 class="story-title">背景故事 / STORY</h3>
+      <div id="modalStory" class="story-content"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+
+  <script src="./js/jquery-3.5.1.min.js"></script>
+  <script src="./js/swiper-bundle.min.js"></script>
+  <script src="./js/characters1.js"></script>
+  <script src="./js/characters.js"></script>
+</body>
+</html>

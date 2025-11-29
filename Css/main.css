@@ -1,0 +1,508 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 8.36vw;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    color: white;
+    background: -webkit-linear-gradient(top, #000 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(180deg, #000 0%, rgba(255, 255, 255, 0) 100%);
+    padding: 1.31vw 3.13vw 0 1.57vw;
+}
+
+.header .logo img {
+    height: 4.07vw;
+}
+
+.header ul.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header ul.menu li {
+    position: relative;
+}
+
+.header ul.menu li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2.30vw;
+    padding-top: 1.31vw;
+    font-size: 0.89vw;
+}
+
+.header ul.menu li.active a,
+.header ul.menu li a:hover {
+    color: var(--themeColor);
+}
+
+.header ul.menu li .bg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 23.76vw;
+    display: flex;
+    pointer-events: none;
+}
+
+.header ul.menu li .bg img.img1 {
+    width: 10.97vw;
+    height: 2.56vw;
+}
+
+.header ul.menu li .bg img.img2 {
+    width: 1.83vw;
+    height: 2.56vw;
+}
+
+.header .right-sec {
+    display: flex;
+    align-items: center;
+}
+
+.header .right-sec .aki-music {
+    width: 1.67vw;
+    height: 1.67vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.21vw;
+    border-radius: 50%;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.header .right-sec .aki-music span {
+    width: 0.16vw;
+    height: 0.52vw;
+    background: var(--themeColor);
+    border-radius: 0.10vw;
+}
+
+.header .right-sec .aki-music span.line2 {
+    width: 0.16vw;
+    height: 0.94vw;
+}
+
+.header .right-sec .aki-music.active span {
+    -webkit-animation: music-dh .6s linear infinite;
+    animation: music-dh .6s linear infinite;
+}
+
+.header .right-sec .aki-music.active span.line2 {
+    -webkit-animation: music-dh2 .6s linear infinite;
+    animation: music-dh2 .6s linear infinite;
+}
+
+@keyframes music-dh {
+    50% {
+        height: 0.94vw;
+    }
+}
+
+@keyframes music-dh2 {
+    50% {
+        height: 0.52vw;
+    }
+}
+
+.header .right-sec a.login {
+    width: 1.67vw;
+    height: 1.67vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid white;
+    color: white;
+    margin-left: 1.04vw;
+}
+
+.header .right-sec a.login .iconfont {
+    font-size: 0.94vw;
+}
+
+.header .right-sec a.login:hover,
+.header .right-sec a.login.active {
+    color: var(--themeColor);
+    border-color: var(--themeColor);
+}
+
+
+
+
+
+
+/* --- 重要：保证页面图片比例不乱，避免被压扁 --- */
+html {
+    min-width: 1280px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.banner {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 首页顶部大图（用图片时） */
+.banner .bg {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+
+.banner-left {
+    position: absolute;
+    left: 3.13vw;
+    bottom: 2.35vw;
+    z-index: 2;
+}
+
+.banner-left a.slj {
+    display: block;
+    width: 3.92vw;
+    height: auto;
+}
+
+.banner-left a.slj img {
+    width: 100%;
+    height: auto;
+}
+
+.banner-left .app-all {
+    margin-top: 2.35vw;
+    display: flex;
+    align-items: center;
+}
+
+.banner-left .app-all a {
+    display: block;
+    width: 1.36vw;
+    margin-right: 1.04vw;
+}
+
+.banner-left .app-all a img {
+    width: 100%;
+    height: auto;
+}
+
+.banner .down-box {
+    position: absolute;
+    left: 50%;
+    bottom: 4.60vw;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.42vw;
+}
+
+.banner .down-box a.code {
+    display: block;
+    border-radius: 0.42vw;
+    border: 1px solid #a6a6a6;
+    background-color: rgba(0, 0, 0, .6);
+    padding: 0.47vw;
+}
+
+.banner .down-box a.code img {
+    width: auto;
+    height: 6.27vw;
+}
+
+.banner .down-box a.pc img {
+    width: auto;
+    height: 7.31vw;
+}
+
+.banner .down-box .item2 a:first-child img {
+    margin-bottom: 1.25vw;
+}
+
+.banner .down-box .item2 img {
+    height: 3.03vw;
+}
+
+a.banner-right {
+    position: absolute;
+    right: 0;
+    bottom: 12.27vw;
+    display: block;
+    width: 18.80vw;
+    padding: 0.78vw;
+    border: 2px solid var(--themeColor);
+    background: rgba(33, 33, 33, .5);
+    border-right: none;
+}
+
+a.banner-right .img {
+    overflow: hidden;
+}
+
+a.banner-right .img img {
+    width: 100%;
+}
+
+a.banner-right:hover .img img {
+    transform: scale(1.1);
+}
+
+a.banner-right .title {
+    margin-top: 0.63vw;
+    font-size: 0.84vw;
+    color: var(--themeColor);
+}
+
+
+.banner .video-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    transform: translateX(-50%) translateY(-50%);
+    width: 3.24vw;
+}
+
+.banner .video-btn:hover {
+    opacity: 0.6;
+}
+
+.banner .video-btn img {
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline-style: none;
+    box-sizing: border-box;
+    font-family: "abcfont";
+    user-select: none;
+    /* 禁止拖拽 */
+    -webkit-user-drag: none;
+}
+
+@font-face {
+    font-family: "abcfont";
+    src: url("./zaozigongfangnaisiti.ttf");
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+i {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+input,
+textarea,
+select,
+button {
+    font-size: inherit;
+    resize: none;
+}
+
+a,
+a:focus,
+a:hover {
+    text-decoration: none !important;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+html {
+    font-size: 0.84vw;
+    color: black;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    line-height: 1;
+    scroll-behavior: smooth;
+    --themeColor: #db9a45;
+}
+
+::selection {
+    background: var(--themeColor);
+    color: #fff;
+}
+
+:focus {
+    outline-color: var(--themeColor);
+}
+
+::-webkit-scrollbar {
+    width: 0.21vw;
+    height: 0.21vw;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--themeColor);
+}
+
+::-webkit-scrollbar-track {
+    background: #333;
+}
+
+
+
+.tab-content>.tab-pane {
+    display: none;
+}
+
+.tab-content>.active {
+    display: block;
+}
+
+
+
+
+/* 背景bgm */
+#body-bgm {
+    display: none;
+}
+
+
+/* 视频弹窗 */
+.video-alert {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.video-alert.active {
+    pointer-events: all;
+    opacity: 1;
+}
+
+.video-alert .bg {
+    width: 100%;
+    height: 100%;
+    background: rgba(17, 17, 17, 0.75);
+}
+
+.video-alert .content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.video-alert .content video {
+    width: 47.00vw;
+}
+
+.video-alert .content span.btn {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.video-alert .content span.btn img {
+    width: 1.67vw;
+    height: 1.67vw;
+    position: absolute;
+    right: -3.13vw;
+    top: 0.52vw;
+}
+
+
+/* 公用标题代码 */
+.common-title {
+    width: 100%;
+    height: 3.66vw;
+    display: flex;
+    align-items: center;
+    font-size: 2.51vw;
+    color: var(--themeColor);
+    border-bottom: 0.05vw solid #d2cab8;
+    text-transform: uppercase;
+}
+
+
+
+
+
+
+
+
+
+
+
+html {
+  overflow-y: scroll;
+}
